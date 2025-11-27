@@ -1,0 +1,86 @@
+:root {
+    --bg-dark: #0f172a;
+    --orb-1: #ff00cc;
+    --orb-2: #3333ff;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--bg-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* As luzes originais */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    animation: flutuar-luz 10s infinite alternate;
+}
+
+body::before { background: var(--orb-1); top: 20%; left: 20%; }
+body::after { background: var(--orb-2); bottom: 20%; right: 20%; animation-delay: -5s; }
+
+
+#pokemon-card{
+    border: solid 1px white;
+    border-radius: 10px;
+    padding: 10vw;
+    display: flex;
+    align-items: center;
+  flex-direction: column;
+    gap: 10px;
+}
+
+#pokemon-card img{
+    width: 200px;
+    height: 200px;
+}
+
+#pokemon-card p{
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+input{
+    width: 80%;
+    padding: 10px ;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    background-color: white;
+}
+
+#poke-btn {
+    width: 50%;
+    padding: 10px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+    color: white;
+    background: linear-gradient(135deg, #ff00cc, #3333ff);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#poke-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(255, 0, 204, 0.5);
+}
+
+h1{
+    color: white;
+}
