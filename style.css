@@ -1,101 +1,301 @@
+/* --- VARIÁVEIS GLOBAIS & CORES DE TIPO --- */
 :root {
-    --bg-dark: #0f172a;
-    --orb-1: #ff00cc;
-    --orb-2: #3333ff;
+    /* cores base da interface */
+    --tech-dark: #121214;
+    --tech-panel: rgba(32, 32, 36, 0.95);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0b0;
+    --accent-glow: #ffffff;
+    /* essa cor vai mudar pelo js */
+
+    /* cores dos tipos  */
+    --color-fire: #ff5722;
+    --color-water: #2196f3;
+    --color-grass: #4caf50;
+    --color-electric: #ffeb3b;
+    --color-psychic: #e91e63;
+    --color-ghost: #673ab7;
+    --color-normal: #a8a878;
+    --default-bg: #303030;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap');
 
 body {
     margin: 0;
     min-height: 100vh;
-    background-color: var(--bg-dark);
+    background: radial-gradient(circle at center, #4a4a4a, #1a1a1a);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
+    /* Fonte mais "tech" */
+    color: var(--text-primary);
+    transition: 0.8s ease, --accent-glow 0.8s ease;
     overflow: hidden;
-    position: relative;
 }
 
-body::before,
+/* --- FUNDOS DINÂMICOS (O JS VAI ATIVAR ISSO) --- */
+/* Usamos gradientes radiais para criar "atmosferas" */
+body.fire {
+    background: radial-gradient(circle at 50% 30%, var(--color-fire), #290500);
+    --accent-glow: var(--color-fire);
+}
+
+body.water {
+    background: radial-gradient(circle at 50% 30%, var(--color-water), #000929);
+    --accent-glow: var(--color-water);
+}
+
+body.grass {
+    background: radial-gradient(circle at 50% 30%, var(--color-grass), #002905);
+    --accent-glow: var(--color-grass);
+}
+
+body.electric {
+    background: radial-gradient(circle at 50% 30%, var(--color-electric), #292200);
+    --accent-glow: var(--color-electric);
+}
+
+body.psychic {
+    background: radial-gradient(circle at 50% 30%, var(--color-psychic), #29001a);
+    --accent-glow: var(--color-psychic);
+}
+
+body.ghost {
+    background: radial-gradient(circle at 50% 30%, var(--color-ghost), #0a0029);
+    --accent-glow: var(--color-ghost);
+}
+
 body::after {
-    content: '';
     position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    filter: blur(80px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(transparent, transparent 2px, rgba(0, 0, 0, 0.3) 3px);
+    pointer-events: none;
     z-index: -1;
-    animation: flutuar-luz 10s infinite alternate;
-}
-
-body::before {
-    background: var(--orb-1);
-    top: 20%;
-    left: 20%;
-}
-
-body::after {
-    background: var(--orb-2);
-    bottom: 20%;
-    right: 20%;
-    animation-delay: -5s;
 }
 
 
 #pokemon-card {
-    border: solid 1px white;
-    border-radius: 10px;
-    padding: 10vw;
+    background: var(--tech-panel);
+    border: 2px solid var(--accent-glow);
+    box-shadow: 0 0 30px var(--accent-glow), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 2.5rem;
+    width: 340px;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+#pokemon-card::before {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--accent-glow);
+    opacity: 0.7;
+}
+
+.search-container {
     display: flex;
-    align-items: center;
-    flex-direction: column;
     gap: 10px;
-}
-
-#pokemon-card img {
-    width: 200px;
-    height: 200px;
-}
-
-#pokemon-card p {
-    color: white;
-    font-size: 1.5rem;
-    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 input {
-    width: 80%;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #0a0a0a;
+    color: var(--accent-glow);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
     font-size: 1rem;
-    background-color: white;
+    outline: none;
+    letter-spacing: 1px;
+}
+
+input::placeholder {
+    color: #555;
 }
 
 #poke-btn {
-    width: 50%;
-    padding: 10px 0;
-    font-size: 1rem;
-    font-weight: bold;
+    padding: 0 25px;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
+    background: var(--accent-glow);
+    color: #000;
+    font-weight: 800;
+    font-size: 1.1rem;
     cursor: pointer;
-    margin-top: 15px;
-    color: white;
-    background: linear-gradient(135deg, #ff00cc, #3333ff);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: 0.3s;
+    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 #poke-btn:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 15px rgba(255, 0, 204, 0.5);
+    filter: brightness(1.2);
+    transform: scale(1.05);
 }
 
-h1 {
-    color: white;
+
+.img-container {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+#poke-img {
+    width: 220px;
+    height: 220px;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+    transition: 0.3s;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+#poke-nome {
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.types-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0 25px;
+}
+
+.type-badge {
+    padding: 6px 18px;
+    background: #1a1a1a;
+    border: 1px solid var(--accent-glow);
+    color: var(--accent-glow);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.stats-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--accent-glow);
+    padding: 1px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.stat {
+    background: #1a1a1a;
+    padding: 15px 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+}
+
+.stat strong {
+    font-size: 1.5rem;
+    color: var(--accent-glow);
 }
 
 /* Se a imagem estiver com o src vazio, ela desaparece */
-img[src=""], img:not([src]) {
+img[src=""],
+img:not([src]) {
+    opacity: 0;
+}
+
+.hidden {
     display: none;
+}
+
+@media (max-width: 768px) {
+    
+    body {
+        overflow-y: auto;
+        align-items: flex-start;
+        padding: 40px ;
+    }
+
+    #pokemon-card {
+        width: 90%;
+        padding: 1.5rem;
+        margin: 0 auto;
+    }
+
+    #pokemon-card::before {
+        font-size: 0.6rem;
+        top: 5px;
+    }
+
+    .search-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    input {
+        width: 100%;
+        font-size: 16px; 
+        box-sizing: border-box; 
+    }
+
+    #poke-btn {
+        width: 100%;
+        padding: 12px 0; 
+    }
+
+    #poke-nome {
+        font-size: 2rem; 
+    }
+
+    .img-container {
+        height: 160px; 
+    }
+
+    #poke-img {
+        width: 180px; 
+        height: 180px;
+    }
+
+    .stat strong {
+        font-size: 1.2rem; 
+    }
+    
+    body::before, body::after {
+        width: 200px;
+        height: 200px;
+        filter: blur(60px);
+    }
 }

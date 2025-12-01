@@ -1,31 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PokéDex</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-
     <div id="pokemon-card">
-        <h1>API POKEMON </h1>
-        <input type="search" placeholder="nome ou numero do pokemon" id="poke-input">
-        <button id="poke-btn">Buscar</button>
+        <div class="search-container">
+            <input type="search" placeholder="ENTER POKÉMON..." id="poke-input">
+            <button id="poke-btn">buscar</button>
+        </div>
 
+        <div class="content hidden" id="poke-content">
+            <div class="img-container">
+                <img src="" alt="" id="poke-img">
+            </div>
+            
+            <h2 id="poke-nome">...</h2>
+            
+            <div id="poke-types" class="types-container"></div>
 
-        <figure><img src="" alt="" id="poke-img"></figure>
-        <p id="poke-nome"></p>
-        <p></p>
+            <div class="stats-box">
+                <div class="stat">
+                    <span>HP</span><strong id="hp-val">0</strong>
+                </div>
+                <div class="stat">
+                    <span>ATK</span><strong id="atk-val">0</strong>
+                </div>
+                <div class="stat">
+                    <span>DEF</span><strong id="def-val">0</strong>
+                </div>
+            </div>
+        </div>
+        
+        <p id="error-msg" style="color: var(--color-fire); font-weight:bold;"></p>
+
     </div>
-
-
-
 
     <script src="script.js"></script>
 </body>
-
 </html>
