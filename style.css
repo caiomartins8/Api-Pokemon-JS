@@ -84,7 +84,7 @@ body::after {
     border: 2px solid var(--accent-glow);
     box-shadow: 0 0 30px var(--accent-glow), inset 0 0 20px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
-    padding: 2.5rem;
+    padding: 1.5rem;
     width: 400px;
     text-align: center;
     position: relative;
@@ -244,15 +244,22 @@ img:not([src]) {
 @media (max-width: 768px) {
     
     body {
+        flex-direction: column;
+                justify-content: flex-start; 
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        box-sizing: border-box; 
         overflow-y: auto;
-        align-items: center; 
-        padding: 20px; 
-        min-height: 100vh; 
     }
 
     #pokemon-card {
-        width: 90%;
-        padding: 1.5rem;
+        width: 80%;
+        max-width: 400px; 
+        
+        margin-top: auto;
+        margin-bottom: auto;
+        flex-shrink: 0; 
     }
 
     #pokemon-card::before {
@@ -299,12 +306,10 @@ img:not([src]) {
         filter: blur(60px);
     }
 
-    
-:placeholder-shown {
-    font-size: 0.9rem;
-    letter-spacing: 0;
-}
-
+    :placeholder-shown {
+        font-size: 0.9rem;
+        letter-spacing: 0;
+    }
 }
 
 #poke-cod-num {
@@ -317,6 +322,6 @@ img:not([src]) {
 }
 
 :placeholder-shown {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     letter-spacing: 0;
 }
