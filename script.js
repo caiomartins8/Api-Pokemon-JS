@@ -12,6 +12,9 @@ const hpval = document.getElementById('hp-val');
 const atkval = document.getElementById('atk-val');
 const defval = document.getElementById('def-val');
 
+//pega o numero do pokemon
+const codnum = document.getElementById('poke-cod-num');
+
 // quando clicar no botao, chama a funcao buscarpokemon
 btnpokemon.addEventListener('click', buscarpokemon);
 
@@ -69,6 +72,8 @@ async function buscarpokemon() {
             // coloca o nome do pokemon na tela
             nomepokemon.innerHTML = dados.name;
             
+            //coloca o numero do pokemon na tela
+            codnum.innerHTML = `#${dados.id.toString()}`;
             // pega a imagem 3d bonitona (other -> home) e coloca na tela
             imgpokemon.src = dados.sprites.other.home.front_default;
             

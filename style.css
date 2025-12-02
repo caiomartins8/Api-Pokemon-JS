@@ -299,3 +299,12 @@ img:not([src]) {
         filter: blur(60px);
     }
 }
+
+#poke-cod-num {
+    color: var(--accent-glow); 
+    text-shadow: 0 0 15px var(--accent-glow);
+    font-size: 2rem; 
+    font-weight: 700; 
+    opacity: 0.8; 
+    margin: 10px; 
+}
