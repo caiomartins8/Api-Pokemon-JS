@@ -325,3 +325,34 @@ img:not([src]) {
     font-size: 0.7rem;
     letter-spacing: 0;
 }
+
+.img-container {
+    position: relative; 
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5); 
+    color: var(--accent-glow);
+    border: 1px solid var(--accent-glow);
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10; 
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: var(--accent-glow);
+    color: black;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+#audio-btn:active {
+    transform: scale(0.9);
+}

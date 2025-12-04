@@ -8,37 +8,33 @@
 </head>
 <body>
 
-    <div id="pokemon-card">
+   <div id="pokemon-card">
         <div class="search-container">
-            <input type="search" placeholder="Digite um nome ou número de pokémon" id="poke-input">
+            <input type="search" placeholder="Digite o nome ou número do pokémon..." id="poke-input">
             <button id="poke-btn">buscar</button>
         </div>
 
         <div class="content hidden" id="poke-content">
-            <h2 id="poke-cod-num">...</h2>
             <div class="img-container">
-                <img src="" alt="" id="poke-img">
+                <button class="nav-btn prev">&lt;</button> <img src="" alt="" id="poke-img">
+                <button class="nav-btn next">&gt;</button> </div>
+            
+            <div class="name-audio-container" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                 <h2 id="poke-nome">...</h2>
+                 <button id="audio-btn" style="padding: 5px 10px; font-size: 1.2rem; cursor: pointer; border-radius: 50%; border: none; background: var(--accent-glow);">🔊</button>
             </div>
-            
-            <h2 id="poke-nome">...</h2>
-            
-            <div id="poke-types" class="types-container"></div>
 
+            <h3 id="poke-cod-num">...</h3>
+            <div id="poke-types" class="types-container"></div>
             <div class="stats-box">
-                <div class="stat">
-                    <span>HP</span><strong id="hp-val">0</strong>
-                </div>
-                <div class="stat">
-                    <span>ATK</span><strong id="atk-val">0</strong>
-                </div>
-                <div class="stat">
-                    <span>DEF</span><strong id="def-val">0</strong>
-                </div>
+                <div class="stat"><span>HP</span><strong id="hp-val">0</strong></div>
+                 <div class="stat"><span>ATK</span><strong id="atk-val">0</strong></div>
+                 <div class="stat"><span>DEF</span><strong id="def-val">0</strong></div>
             </div>
         </div>
         
         <p id="error-msg" style="color: var(--color-fire); font-weight:bold;"></p>
-
+        <audio id="poke-audio"></audio>
     </div>
 
     <script src="script.js"></script>
